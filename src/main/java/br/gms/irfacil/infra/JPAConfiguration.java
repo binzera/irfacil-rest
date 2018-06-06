@@ -23,7 +23,7 @@ public class JPAConfiguration {
 			DataSource dataSource, Properties additionalProperties) {
 		LocalContainerEntityManagerFactoryBean factoryBean = 
 				new LocalContainerEntityManagerFactoryBean();
-		factoryBean.setPackagesToScan("br.gms.siscofa.models");
+		factoryBean.setPackagesToScan("br.gms.irfacil.model");
 		factoryBean.setDataSource(dataSource);
 		
 		JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
@@ -49,7 +49,7 @@ public class JPAConfiguration {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setUsername("root");
 		dataSource.setPassword("123456");
-		dataSource.setUrl("jdbc:mysql://localhost:3306/siscofa");
+		dataSource.setUrl("jdbc:mysql://localhost:3306/irfacil");
 		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
 		
 		return dataSource;

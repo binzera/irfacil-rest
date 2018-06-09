@@ -10,7 +10,6 @@ import java.util.Date;
  * 
  */
 @Entity
-@Table(name="operacao")
 @NamedQuery(name="Operacao.findAll", query="SELECT o FROM Operacao o")
 public class Operacao implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -22,9 +21,29 @@ public class Operacao implements Serializable {
 	@Temporal(TemporalType.DATE)
 	private Date data;
 
+	@Temporal(TemporalType.DATE)
+	@Column(name="dt_compra")
+	private Date dtCompra;
+
+	@Temporal(TemporalType.DATE)
+	@Column(name="dt_venda")
+	private Date dtVenda;
+
 	private int quantidade;
 
 	private double valor;
+
+	@Column(name="vl_compra")
+	private double vlCompra;
+
+	@Column(name="vl_emolumentos")
+	private double vlEmolumentos;
+
+	@Column(name="vl_ir")
+	private double vlIr;
+
+	@Column(name="vl_venda")
+	private double vlVenda;
 
 	//bi-directional many-to-one association to Papel
 	@ManyToOne(fetch=FetchType.LAZY)
@@ -58,6 +77,22 @@ public class Operacao implements Serializable {
 		this.data = data;
 	}
 
+	public Date getDtCompra() {
+		return this.dtCompra;
+	}
+
+	public void setDtCompra(Date dtCompra) {
+		this.dtCompra = dtCompra;
+	}
+
+	public Date getDtVenda() {
+		return this.dtVenda;
+	}
+
+	public void setDtVenda(Date dtVenda) {
+		this.dtVenda = dtVenda;
+	}
+
 	public int getQuantidade() {
 		return this.quantidade;
 	}
@@ -72,6 +107,38 @@ public class Operacao implements Serializable {
 
 	public void setValor(double valor) {
 		this.valor = valor;
+	}
+
+	public double getVlCompra() {
+		return this.vlCompra;
+	}
+
+	public void setVlCompra(double vlCompra) {
+		this.vlCompra = vlCompra;
+	}
+
+	public double getVlEmolumentos() {
+		return this.vlEmolumentos;
+	}
+
+	public void setVlEmolumentos(double vlEmolumentos) {
+		this.vlEmolumentos = vlEmolumentos;
+	}
+
+	public double getVlIr() {
+		return this.vlIr;
+	}
+
+	public void setVlIr(double vlIr) {
+		this.vlIr = vlIr;
+	}
+
+	public double getVlVenda() {
+		return this.vlVenda;
+	}
+
+	public void setVlVenda(double vlVenda) {
+		this.vlVenda = vlVenda;
 	}
 
 	public Papel getPapel() {

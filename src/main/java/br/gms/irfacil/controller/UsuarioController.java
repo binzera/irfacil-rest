@@ -23,8 +23,8 @@ public class UsuarioController {
 	
 	@RequestMapping(value="/logar" , method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
-	public Usuario logar(Usuario usuario) {
-		Usuario logado = dao.loadUserByUsername(usuario.getEmail());
+	public Usuario logar(@RequestBody Usuario usuario) {
+		Usuario logado = dao.loadUserByUsername(usuario.getLogin());
 		return logado;
 	}
 	
@@ -35,6 +35,7 @@ public class UsuarioController {
 	}
 	
 	@RequestMapping(value="/listar" , method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
 	public List<Usuario> listar() {
 		return dao.list();
 	}

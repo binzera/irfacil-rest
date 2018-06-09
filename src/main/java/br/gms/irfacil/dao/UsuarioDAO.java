@@ -12,15 +12,16 @@ import br.gms.irfacil.model.Usuario;
 @Repository
 public class UsuarioDAO extends BaseCRUDRepository<Usuario>{
 	
-	public Usuario loadUserByUsername(String email) {
+	public Usuario loadUserByUsername(String login) {
 		List<Usuario> usuarios = manager
-				.createQuery("select u from Usuario u where u.email = :email",
+				.createQuery("select u from Usuario u where u.login = :login",
 				Usuario.class)
-			.setParameter("email", email)
+			.setParameter("login", login)
 			.getResultList();
 		
 		if (usuarios.isEmpty()) {
-			throw new UsernameNotFoundException("Usuário "  + email + " não foi encontrado");
+			return null;
+			//throw new UsernameNotFoundException("Usuário "  + email + " não foi encontrado");
 		}
 		
 		return usuarios.get(0);

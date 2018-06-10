@@ -1,8 +1,20 @@
 package br.gms.irfacil.model;
 
 import java.io.Serializable;
-import javax.persistence.*;
 import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
 /**
@@ -11,15 +23,13 @@ import java.util.Date;
  */
 @Entity
 @NamedQuery(name="Operacao.findAll", query="SELECT o FROM Operacao o")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Operacao implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int id;
-
-	@Temporal(TemporalType.DATE)
-	private Date data;
+	private Integer id;
 
 	@Temporal(TemporalType.DATE)
 	@Column(name="dt_compra")
@@ -30,8 +40,6 @@ public class Operacao implements Serializable {
 	private Date dtVenda;
 
 	private int quantidade;
-
-	private double valor;
 
 	@Column(name="vl_compra")
 	private double vlCompra;
@@ -49,11 +57,15 @@ public class Operacao implements Serializable {
 	@ManyToOne(fetch=FetchType.LAZY)
 	private Papel papel;
 
-	//bi-directional many-to-one association to TipoOperacao
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="tipo_operacao_id")
-	private TipoOperacao tipoOperacao;
+	@Column(name="tipo_operacao_id")
+	private Integer tipoOperacao;
+	
+	@Column(name="resultado_liquido")
+	private Double resultadoLiquido;
 
+	@Column(name="vl_ir_fonte")
+	private Double vlIrFonte;
+	
 	//bi-directional many-to-one association to Usuario
 	@ManyToOne(fetch=FetchType.LAZY)
 	private Usuario usuario;
@@ -61,20 +73,12 @@ public class Operacao implements Serializable {
 	public Operacao() {
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return this.id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
-	}
-
-	public Date getData() {
-		return this.data;
-	}
-
-	public void setData(Date data) {
-		this.data = data;
 	}
 
 	public Date getDtCompra() {
@@ -99,14 +103,6 @@ public class Operacao implements Serializable {
 
 	public void setQuantidade(int quantidade) {
 		this.quantidade = quantidade;
-	}
-
-	public double getValor() {
-		return this.valor;
-	}
-
-	public void setValor(double valor) {
-		this.valor = valor;
 	}
 
 	public double getVlCompra() {
@@ -149,11 +145,11 @@ public class Operacao implements Serializable {
 		this.papel = papel;
 	}
 
-	public TipoOperacao getTipoOperacao() {
+	public Integer getTipoOperacao() {
 		return this.tipoOperacao;
 	}
 
-	public void setTipoOperacao(TipoOperacao tipoOperacao) {
+	public void setTipoOperacao(Integer tipoOperacao) {
 		this.tipoOperacao = tipoOperacao;
 	}
 
@@ -163,6 +159,22 @@ public class Operacao implements Serializable {
 
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
+	}
+
+	public Double getResultadoLiquido() {
+		return resultadoLiquido;
+	}
+
+	public void setResultadoLiquido(Double resultadoLiquido) {
+		this.resultadoLiquido = resultadoLiquido;
+	}
+
+	public Double getVlIrFonte() {
+		return vlIrFonte;
+	}
+
+	public void setVlIrFonte(Double vlIrFonte) {
+		this.vlIrFonte = vlIrFonte;
 	}
 
 }

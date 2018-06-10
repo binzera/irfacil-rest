@@ -52,18 +52,5 @@ public class TipoOperacao implements Serializable {
 		this.operacaos = operacaos;
 	}
 
-	public Operacao addOperacao(Operacao operacao) {
-		getOperacaos().add(operacao);
-		operacao.setTipoOperacao(this);
-
-		return operacao;
-	}
-
-	public Operacao removeOperacao(Operacao operacao) {
-		getOperacaos().remove(operacao);
-		operacao.setTipoOperacao(null);
-
-		return operacao;
-	}
 
 }

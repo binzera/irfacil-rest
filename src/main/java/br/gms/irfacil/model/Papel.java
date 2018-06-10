@@ -1,8 +1,15 @@
 package br.gms.irfacil.model;
 
 import java.io.Serializable;
-import javax.persistence.*;
-import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.NamedQuery;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
 /**
@@ -11,6 +18,7 @@ import java.util.List;
  */
 @Entity
 @NamedQuery(name="Papel.findAll", query="SELECT p FROM Papel p")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Papel implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -25,8 +33,8 @@ public class Papel implements Serializable {
 	private String noEmpresa;
 
 	//bi-directional many-to-one association to Operacao
-	@OneToMany(mappedBy="papel")
-	private List<Operacao> operacaos;
+	//@OneToMany(mappedBy="papel")
+	//private List<Operacao> operacaos;
 
 	public Papel() {
 	}
@@ -55,26 +63,26 @@ public class Papel implements Serializable {
 		this.noEmpresa = noEmpresa;
 	}
 
-	public List<Operacao> getOperacaos() {
-		return this.operacaos;
-	}
+//	public List<Operacao> getOperacaos() {
+//		return this.operacaos;
+//	}
+//
+//	public void setOperacaos(List<Operacao> operacaos) {
+//		this.operacaos = operacaos;
+//	}
 
-	public void setOperacaos(List<Operacao> operacaos) {
-		this.operacaos = operacaos;
-	}
-
-	public Operacao addOperacao(Operacao operacao) {
-		getOperacaos().add(operacao);
-		operacao.setPapel(this);
-
-		return operacao;
-	}
-
-	public Operacao removeOperacao(Operacao operacao) {
-		getOperacaos().remove(operacao);
-		operacao.setPapel(null);
-
-		return operacao;
-	}
+//	public Operacao addOperacao(Operacao operacao) {
+//		getOperacaos().add(operacao);
+//		operacao.setPapel(this);
+//
+//		return operacao;
+//	}
+//
+//	public Operacao removeOperacao(Operacao operacao) {
+//		getOperacaos().remove(operacao);
+//		operacao.setPapel(null);
+//
+//		return operacao;
+//	}
 
 }

@@ -44,10 +44,10 @@ public class UsuarioController {
 	@ResponseBody
 	public Usuario userTeste() {
 		Usuario user = new Usuario();
-		user.setNome("Glaubert");
-		user.setLogin("glaubert");
+		user.setNome("Joaozinho");
+		user.setLogin("joao");
 		user.setSenha("1739e701ccc9dbf1b485f672203fc81f");
-		user.setEmail("glaubert.schult@gmail.com");
+		user.setEmail("joao@gmail.com");
 		return dao.incluir(user);
 	}
 

@@ -46,26 +46,41 @@ public class PapelController {
 		papel.setCdPapel("PETR4");
 		papel.setNoEmpresa("Petrobras");
 		dao.incluir(papel);
-		papel.setCdPapel("ABEV3");
-		papel.setNoEmpresa("Ambev");
-		dao.incluir(papel);
-		papel.setCdPapel("VALE5");
-		papel.setNoEmpresa("Vale");
-		dao.incluir(papel);
-		papel.setCdPapel("BRKM5");
-		papel.setNoEmpresa("Brasken");
-		dao.incluir(papel);
-		papel.setCdPapel("RSID3");
-		papel.setNoEmpresa("Rossi");
-		dao.incluir(papel);
-		papel.setCdPapel("BBAS3");
-		papel.setNoEmpresa("Banco do brasil");
-		dao.incluir(papel);
-		papel.setCdPapel("BBDC3");
-		papel.setNoEmpresa("Bradesco");
-		dao.incluir(papel);
-		papel.setCdPapel("GOLL4");
-		papel.setNoEmpresa("Gol");
+		
+		Papel papel2 = new Papel();
+		papel2.setCdPapel("ABEV3");
+		papel2.setNoEmpresa("Ambev");
+		dao.incluir(papel2);
+		
+		Papel papel3 = new Papel();
+		papel3.setCdPapel("VALE5");
+		papel3.setNoEmpresa("Vale");
+		dao.incluir(papel3);
+		
+		Papel papel4 = new Papel();
+		papel4.setCdPapel("BRKM5");
+		papel4.setNoEmpresa("Brasken");
+		dao.incluir(papel4);
+		
+		Papel papel5 = new Papel();
+		papel5.setCdPapel("RSID3");
+		papel5.setNoEmpresa("Rossi");
+		dao.incluir(papel5);
+		
+		Papel papel6 = new Papel();
+		papel6.setCdPapel("BBAS3");
+		papel6.setNoEmpresa("Banco do brasil");
+		dao.incluir(papel6);
+		
+		Papel papel7 = new Papel();
+		papel7.setCdPapel("BBDC3");
+		papel7.setNoEmpresa("Bradesco");
+		dao.incluir(papel7);
+		
+		Papel papel8 = new Papel();
+		papel8.setCdPapel("GOLL4");
+		papel8.setNoEmpresa("Gol");
+		dao.incluir(papel8);
 		
 		
 		return "Papéis cadastrados com sucesso";

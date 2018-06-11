@@ -39,5 +39,16 @@ public class UsuarioController {
 	public List<Usuario> listar() {
 		return dao.list();
 	}
+	
+	@RequestMapping(value="/iserirusuarioteste" , method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public Usuario userTeste() {
+		Usuario user = new Usuario();
+		user.setNome("Glaubert");
+		user.setLogin("glaubert");
+		user.setSenha("1739e701ccc9dbf1b485f672203fc81f");
+		user.setEmail("glaubert.schult@gmail.com");
+		return dao.incluir(user);
+	}
 
 }

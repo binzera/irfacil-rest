@@ -40,7 +40,7 @@ public class UsuarioController {
 		return dao.list();
 	}
 	
-	@RequestMapping(value="/iserirusuarioteste" , method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value="/inserirusuarioteste" , method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	public Usuario userTeste() {
 		Usuario user = new Usuario();

@@ -1,14 +1,18 @@
 package br.gms.irfacil.model;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -35,6 +39,10 @@ public class Usuario implements Serializable {
 	private String nome;
 
 	private String senha;
+	
+	@Temporal(TemporalType.DATE)
+	@Column(name="dt_criacao")
+	private Date dtCriacao;
 
 	//bi-directional many-to-one association to Operacao
 	@OneToMany(mappedBy="usuario")
@@ -104,6 +112,14 @@ public class Usuario implements Serializable {
 		operacao.setUsuario(null);
 
 		return operacao;
+	}
+	
+	public Date getDtCriacao() {
+		return this.dtCriacao;
+	}
+
+	public void setDtCriacao(Date dtCriacao) {
+		this.dtCriacao = dtCriacao;
 	}
 
 }

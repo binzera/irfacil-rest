@@ -8,6 +8,9 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import org.springframework.security.web.csrf.CsrfTokenRepository;
 import org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository;
 
+import br.gms.irfacil.security.JWTAuthenticationFilter;
+import br.gms.irfacil.security.JWTLoginFilter;
+
 
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
@@ -25,7 +28,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 			.and()
 			
 			// filtra requisições de login
-			.addFilterBefore(new JWTLoginFilter("/login", authenticationManager()),
+			.addFilterBefore(new JWTLoginFilter("/usuario/logar", authenticationManager()),
             UsernamePasswordAuthenticationFilter.class)
 		
 			//Filtra outras requisições para verificar a presença do JWT no header

@@ -48,7 +48,7 @@ public class JPAConfiguration {
 	public DataSource dataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setUsername("root");
-		dataSource.setPassword("soh");
+		dataSource.setPassword("123456");
 		dataSource.setUrl("jdbc:mysql://localhost:3306/irfacil");
 		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
 		
